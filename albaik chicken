@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albaik Chicken — Kano's Nonstop Kitchen</title>
+<meta name="description" content="Albaik Chicken on Gwarzo Road, Kano. Crispy fried chicken, white rice & liver sauce, shawarma and burgers. Open 24 hours — dine-in, drive-through and delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo: #7A2118;
+    --indigo-deep: #3D0F0B;
+    --gold: #E8B400;
+    --gold-bright: #FFE402;
+    --pepper: #DE413A;
+    --cream: #FBF4E6;
+    --cream-dim: #F3E9D6;
+    --charcoal: #241B14;
+    --line-on-cream: rgba(36,27,20,0.14);
+    --line-on-indigo: rgba(251,244,230,0.16);
+    --shadow: 0 18px 40px rgba(61,15,11,0.18);
+    --radius: 18px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; scroll-padding-top:84px; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; margin:0; padding:0; }
+  h1,h2,h3{ margin:0; }
+  .display{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
+  .mono{ font-family:'DM Mono', monospace; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  section{ position:relative; }
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--gold-bright);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal-delay-1.in-view{ transition-delay:.08s; }
+  .reveal-delay-2.in-view{ transition-delay:.16s; }
+  .reveal-delay-3.in-view{ transition-delay:.24s; }
+  .reveal-delay-4.in-view{ transition-delay:.32s; }
+
+  /* ---------- eyebrow / section heads ---------- */
+  .eyebrow{
+    font-family:'DM Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--pepper);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:2px;
+    background:var(--pepper);
+    display:inline-block;
+  }
+  .eyebrow.on-indigo{ color:var(--gold-bright); }
+  .eyebrow.on-indigo::before{ background:var(--gold-bright); }
+
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(2rem,4.6vw,3rem); line-height:1.02; }
+  .section-head p{ margin-top:14px; font-size:1.05rem; opacity:0.82; max-width:46ch; }
+
+  /* ---------- zigzag divider (Hausa relief-pattern motif) ---------- */
+  .zigzag{
+    height:13px;
+    background:
+      linear-gradient(135deg, var(--gold) 25%, transparent 25.5%) 0 0/13px 13px,
+      linear-gradient(225deg, var(--gold) 25%, transparent 25.5%) 0 0/13px 13px;
+    background-color:var(--indigo-deep);
+  }
+  .zigzag.flip{ background-color:var(--cream); }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:80;
+    background:rgba(122,33,24,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-on-indigo);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ display:flex; flex-direction:column; line-height:1; color:var(--cream); }
+  .brand .display{ font-size:1.45rem; letter-spacing:0.03em; color:var(--gold-bright); }
+  .brand .mono{ font-size:0.62rem; letter-spacing:0.22em; opacity:0.7; margin-top:3px; }
+  .nav-links{ display:flex; align-items:center; gap:32px; }
+  .nav-links a, .nav-links button:not(.nav-cta){
+    color:var(--cream); opacity:0.82; font-weight:500; font-size:0.95rem;
+    position:relative; padding:4px 0;
+    background:none; border:0; font-family:inherit; cursor:pointer; appearance:none; -webkit-appearance:none;
+  }
+  .nav-links a::after, .nav-links button:not(.nav-cta)::after{
+    content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px;
+    background:var(--gold-bright); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover, .nav-links button:not(.nav-cta):hover{ opacity:1; }
+  .nav-links a:hover::after, .nav-links button:not(.nav-cta):hover::after{ transform:scaleX(1); }
+  .nav-cta{
+    display:flex; align-items:center; gap:8px;
+    background:var(--gold); color:var(--indigo-deep);
+    padding:10px 18px; border-radius:999px;
+    font-weight:700; font-size:0.9rem;
+    transition:background .2s ease, transform .2s ease;
+    border:0; font-family:inherit; cursor:pointer; appearance:none; -webkit-appearance:none;
+    position:relative;
+  }
+  .nav-cta:hover{ background:var(--gold-bright); transform:translateY(-1px); }
+  .nav-toggle{
+    display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:8px;
+  }
+  .nav-toggle span{ width:24px; height:2px; background:var(--cream); display:block; transition:transform .25s ease, opacity .25s ease; }
+  .nav-toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:absolute; top:72px; left:0; right:0;
+      background:var(--indigo); flex-direction:column; align-items:flex-start;
+      padding:18px 24px 26px; gap:18px; border-bottom:1px solid var(--line-on-indigo);
+      transform:translateY(-12px); opacity:0; pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .nav-links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .nav-cta{ margin-top:4px; }
+    .nav-toggle{ display:flex; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle, rgba(232,180,0,0.16) 1.5px, transparent 1.5px) 0 0/22px 22px,
+      linear-gradient(165deg, var(--indigo) 0%, var(--indigo-deep) 78%);
+    color:var(--cream);
+    padding:64px 0 88px;
+    overflow:hidden;
+  }
+  .hero .wrap{ display:grid; grid-template-columns:1.25fr 0.9fr; gap:40px; align-items:center; }
+  .hero-badge-row{ display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+  .open-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(251,244,230,0.08); border:1px solid var(--line-on-indigo);
+    padding:7px 14px 7px 10px; border-radius:999px; font-size:0.8rem; font-weight:600;
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%; background:#6FCF97;
+    box-shadow:0 0 0 0 rgba(111,207,151,0.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(111,207,151,0.55); }
+    70%{ box-shadow:0 0 0 9px rgba(111,207,151,0); }
+    100%{ box-shadow:0 0 0 0 rgba(111,207,151,0); }
+  }
+  .rating-pill{ display:inline-flex; align-items:center; gap:7px; font-size:0.8rem; opacity:0.9; }
+  .stars{ position:relative; display:inline-block; font-size:0.95rem; letter-spacing:2px; }
+  .stars-bg{ color:rgba(251,244,230,0.25); }
+  .stars-fg{ position:absolute; top:0; left:0; overflow:hidden; width:82%; color:var(--gold-bright); white-space:nowrap; }
+
+  .hero h1{
+    font-size:clamp(2.6rem,6.4vw,4.6rem);
+    line-height:0.98;
+    color:var(--cream);
+  }
+  .hero h1 span{ color:var(--gold-bright); }
+  .hero p.lede{
+    margin-top:22px; font-size:1.12rem; max-width:46ch; opacity:0.85;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; border-radius:999px; font-weight:700; font-size:0.95rem;
+    border:1px solid transparent; cursor:pointer; transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+    font-family:inherit; background:none; appearance:none; -webkit-appearance:none;
+  }
+  .btn-primary{ background:var(--gold); color:var(--indigo-deep); }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 10px 22px rgba(232,180,0,0.28); }
+  .btn-ghost{ background:transparent; color:var(--cream); border-color:rgba(251,244,230,0.4); }
+  .btn-ghost:hover{ border-color:var(--cream); transform:translateY(-2px); }
+  .btn-pepper{ background:var(--pepper); color:var(--cream); }
+  .btn-pepper:hover{ background:#EA5048; transform:translateY(-2px); box-shadow:0 10px 22px rgba(222,65,58,0.3); }
+
+  .hero-price{ margin-top:30px; font-size:0.85rem; opacity:0.75; }
+  .hero-price .mono{ color:var(--gold-bright); }
+
+  /* stamp / signature element */
+  .stamp-wrap{ display:flex; justify-content:center; }
+  .stamp{
+    width:min(280px,80vw); height:min(280px,80vw);
+    animation:stamp-in .9s cubic-bezier(.2,.9,.3,1.2) both, stamp-spin 38s linear infinite;
+    animation-delay:0.1s, 0.9s;
+  }
+  @keyframes stamp-in{
+    0%{ opacity:0; transform:scale(0.6) rotate(-26deg); }
+    100%{ opacity:1; transform:scale(1) rotate(-8deg); }
+  }
+  @keyframes stamp-spin{
+    from{ transform:rotate(-8deg); }
+    to{ transform:rotate(352deg); }
+  }
+  .stamp-ring-outer{ fill:none; stroke:var(--gold-bright); stroke-width:2; }
+  .stamp-ring-inner{ fill:none; stroke:rgba(255,228,2,0.45); stroke-width:1; stroke-dasharray:3 5; }
+  .stamp-text{ font-family:'DM Mono', monospace; font-size:11.5px; letter-spacing:3px; fill:var(--cream); }
+  .stamp-center{ font-family:'Anton', sans-serif; font-size:27px; fill:var(--gold-bright); letter-spacing:0.03em; }
+  .stamp-sub{ font-family:'DM Mono', monospace; font-size:9px; fill:rgba(251,244,230,0.7); letter-spacing:2px; }
+
+  /* ---------- marquee ---------- */
+  .marquee-strip{ background:var(--gold); overflow:hidden; padding:14px 0; border-top:1px solid var(--indigo-deep); border-bottom:1px solid var(--indigo-deep); }
+  .marquee-track{ display:flex; width:max-content; animation:marquee 32s linear infinite; }
+  .marquee-track span{
+    display:flex; align-items:center; gap:14px;
+    font-family:'Anton', sans-serif; font-size:1.15rem; letter-spacing:0.04em;
+    color:var(--indigo-deep); padding:0 28px; white-space:nowrap; text-transform:uppercase;
+  }
+  .marquee-track span::after{ content:"●"; font-size:0.5rem; color:var(--indigo-deep); margin-left:14px; opacity:0.5; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------- about ---------- */
+  .about{ padding:96px 0; background:var(--cream); }
+  .about .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+  .about-copy h2{ font-size:clamp(2rem,4.6vw,3rem); line-height:1.04; }
+  .about-copy p{ margin-top:20px; font-size:1.05rem; opacity:0.85; max-width:48ch; }
+  .about-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:38px; }
+  .stat{ border-top:2px solid var(--charcoal); padding-top:12px; }
+  .stat .num{ font-family:'Anton', sans-serif; font-size:1.9rem; color:var(--pepper); }
+  .stat .label{ font-size:0.78rem; opacity:0.7; margin-top:2px; }
+
+  .about-visual{
+    position:relative; aspect-ratio:1/1; border-radius:28px;
+    background:linear-gradient(155deg, var(--indigo) 0%, var(--indigo-deep) 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow);
+  }
+  .about-visual::before{
+    content:""; position:absolute; inset:18px; border:1px dashed rgba(251,244,230,0.3); border-radius:20px;
+  }
+  .about-visual svg{ width:62%; }
+
+  /* ---------- why chips ---------- */
+  .why{ padding:18px 0 96px; background:var(--cream); }
+  .chips{ display:flex; flex-wrap:wrap; gap:12px; }
+  .chip{
+    font-family:'DM Mono', monospace; font-size:0.82rem; letter-spacing:0.02em;
+    background:var(--cream-dim); border:1px solid var(--line-on-cream);
+    padding:11px 18px; border-radius:999px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .chip:hover{ background:var(--gold); transform:translateY(-2px); }
+
+  /* ---------- menu ---------- */
+  .menu{ padding:96px 0; background:var(--indigo); color:var(--cream); }
+  .menu .eyebrow, .menu .section-head p{ color:inherit; }
+  .menu-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .menu-card{
+    background:rgba(251,244,230,0.05); border:1px solid var(--line-on-indigo);
+    border-radius:var(--radius); padding:28px; position:relative; overflow:hidden;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .menu-card:hover{ transform:translateY(-5px); border-color:var(--gold-bright); background:rgba(251,244,230,0.08); }
+  .menu-card .tag{
+    display:inline-block; font-family:'DM Mono', monospace; font-size:0.7rem; letter-spacing:0.08em;
+    color:var(--indigo-deep); background:var(--gold-bright); padding:4px 10px; border-radius:999px; margin-bottom:16px;
+  }
+  .menu-card h3{ font-family:'Anton', sans-serif; font-size:1.4rem; text-transform:uppercase; letter-spacing:0.01em; line-height:1.15; }
+  .menu-card p{ margin-top:10px; font-size:0.95rem; opacity:0.78; }
+  .menu-card__icon{
+    width:60px; height:60px; border-radius:16px;
+    background:rgba(251,244,230,0.08); border:1px solid var(--line-on-indigo);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .menu-card__icon svg{ width:36px; height:36px; }
+  .menu-note{ margin-top:30px; font-size:0.88rem; opacity:0.65; }
+
+  /* ---------- reviews ---------- */
+  .reviews{ padding:96px 0; background:var(--cream); }
+  .review-summary{ display:flex; align-items:center; gap:18px; margin-bottom:36px; flex-wrap:wrap; }
+  .review-summary .score{ font-family:'Anton', sans-serif; font-size:3rem; color:var(--pepper); line-height:1; }
+  .review-summary .score-meta{ font-size:0.85rem; opacity:0.7; }
+  .review-summary .stars-bg{ color:rgba(36,27,20,0.18); }
+  .review-summary .stars-fg{ color:var(--pepper); }
+
+  .review-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .review-card{
+    background:#fff; border:1px solid var(--line-on-cream); border-radius:var(--radius);
+    padding:26px; box-shadow:0 8px 22px rgba(36,27,20,0.05);
+  }
+  .review-card .stars-row{ margin-bottom:14px; }
+  .review-card .stars-row .stars-bg{ color:rgba(36,27,20,0.15); }
+  .review-card .stars-row .stars-fg{ color:var(--pepper); }
+  .review-card p.quote{ font-size:0.98rem; opacity:0.88; }
+  .review-card .who{ margin-top:18px; display:flex; align-items:center; gap:12px; }
+  .avatar{
+    width:38px; height:38px; border-radius:50%; background:var(--indigo);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center;
+    font-family:'Anton', sans-serif; font-size:0.95rem;
+  }
+  .who .name{ font-weight:700; font-size:0.9rem; }
+  .who .meta{ font-size:0.76rem; opacity:0.6; }
+
+  /* ---------- visit ---------- */
+  .visit{ padding:96px 0 110px; background:var(--indigo-deep); color:var(--cream); position:relative; overflow:hidden; }
+  .visit::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle, rgba(232,180,0,0.1) 1.5px, transparent 1.5px) 0 0/22px 22px;
+    pointer-events:none;
+  }
+  .visit .wrap{ position:relative; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; }
+  .visit .eyebrow{ color:var(--gold-bright); }
+  .visit h2{ font-size:clamp(2rem,4.6vw,3rem); color:var(--cream); margin-bottom:30px; }
+  .info-row{ display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--line-on-indigo); }
+  .info-row:last-of-type{ border-bottom:1px solid var(--line-on-indigo); }
+  .info-row .icon{ flex:none; width:22px; height:22px; color:var(--gold-bright); margin-top:2px; }
+  .info-row .label{ font-family:'DM Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; opacity:0.6; text-transform:uppercase; }
+  .info-row .value{ font-size:1.02rem; margin-top:3px; }
+  .visit-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
+
+  .services{ display:flex; flex-direction:column; gap:18px; }
+  .service-card{
+    background:rgba(251,244,230,0.05); border:1px solid var(--line-on-indigo);
+    border-radius:var(--radius); padding:22px; display:flex; gap:16px; align-items:flex-start;
+  }
+  .service-card .icon{ width:26px; height:26px; flex:none; color:var(--gold-bright); margin-top:2px; }
+  .service-card h3{ font-family:'Anton', sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em; }
+  .service-card p{ margin-top:4px; font-size:0.88rem; opacity:0.75; }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--indigo-deep); color:rgba(251,244,230,0.7); padding:48px 0 30px; border-top:1px solid var(--line-on-indigo); }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center; }
+  footer .display{ color:var(--gold-bright); font-size:1.3rem; }
+  footer .fine{ font-size:0.78rem; opacity:0.6; margin-top:6px; }
+  .footer-links{ display:flex; gap:22px; font-size:0.88rem; }
+  .footer-links button{ background:none; border:0; color:inherit; font:inherit; cursor:pointer; padding:0; }
+  .footer-links a:hover, .footer-links button:hover{ color:var(--gold-bright); }
+
+  /* ---------- sticky mobile call bar ---------- */
+  .mobile-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:90;
+    display:none; gap:1px; background:var(--line-on-indigo);
+    box-shadow:0 -8px 24px rgba(61,15,11,0.25);
+  }
+  .mobile-bar a, .mobile-bar button{
+    flex:1; text-align:center; padding:15px 10px; font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    border:0; font-family:inherit; cursor:pointer; appearance:none; -webkit-appearance:none;
+  }
+  .mobile-bar .call{ background:var(--gold); color:var(--indigo-deep); }
+  .mobile-bar .dir{ background:var(--pepper); color:var(--cream); }
+
+  @media (max-width:980px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .stamp-wrap{ order:-1; margin-bottom:8px; }
+    .stamp{ width:200px; height:200px; }
+    .about .wrap{ grid-template-columns:1fr; }
+    .about-visual{ max-width:340px; margin:0 auto; }
+    .menu-grid{ grid-template-columns:1fr; }
+    .review-grid{ grid-template-columns:1fr; }
+    .visit .wrap{ grid-template-columns:1fr; }
+  }
+  @media (max-width:640px){
+    .about-stats{ grid-template-columns:1fr 1fr; }
+    .mobile-bar{ display:flex; }
+    body{ padding-bottom:58px; }
+    .hero{ padding:44px 0 64px; }
+    .review-summary{ flex-direction:column; align-items:flex-start; gap:6px; }
+  }
+
+  /* ================= ORDER SYSTEM ================= */
+  .menu-cta{ margin-top:34px; }
+
+  .cart-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:18px; height:18px; padding:0 5px;
+    background:var(--pepper); color:var(--cream);
+    border-radius:999px; font-family:'DM Mono', monospace; font-size:0.66rem;
+  }
+
+  .order-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(61,15,11,0.62);
+    display:flex; align-items:flex-end; justify-content:center;
+    opacity:0; pointer-events:none;
+    transition:opacity .25s ease;
+  }
+  .order-overlay.open{ opacity:1; pointer-events:auto; }
+
+  .order-modal{
+    width:100%; max-width:480px; max-height:92vh;
+    background:var(--cream); color:var(--charcoal);
+    border-radius:24px 24px 0 0;
+    display:flex; flex-direction:column;
+    transform:translateY(100%);
+    transition:transform .32s cubic-bezier(.2,.85,.3,1);
+    box-shadow:0 -20px 50px rgba(61,15,11,0.35);
+  }
+  .order-overlay.open .order-modal{ transform:translateY(0); }
+  @media (min-width:640px){
+    .order-overlay{ align-items:center; }
+    .order-modal{ border-radius:24px; max-height:88vh; }
+  }
+
+  .order-modal__header{
+    flex:none;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 22px; border-bottom:1px solid var(--line-on-cream);
+    background:var(--indigo); color:var(--cream); border-radius:24px 24px 0 0;
+  }
+  .order-modal__title{ display:flex; flex-direction:column; }
+  .order-modal__title .display{ font-size:1.2rem; color:var(--gold-bright); }
+  .order-modal__title .mono{ font-size:0.62rem; letter-spacing:0.14em; opacity:0.7; }
+  .order-modal__actions{ display:flex; align-items:center; gap:10px; }
+  .icon-btn{
+    background:rgba(251,244,230,0.1); border:1px solid var(--line-on-indigo);
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--cream); cursor:pointer; font-size:1rem; position:relative;
+    transition:background .2s ease; font-family:inherit; appearance:none; -webkit-appearance:none;
+  }
+  .icon-btn:hover{ background:rgba(251,244,230,0.2); }
+
+  .order-modal__body{ padding:20px 22px 0; overflow-y:auto; flex:1; }
+  .order-view{ display:none; }
+  .order-view.active{ display:block; animation:view-in .3s ease; }
+  @keyframes view-in{ from{ opacity:0; transform:translateX(8px);} to{ opacity:1; transform:translateX(0);} }
+
+  .menu-category{ margin-bottom:8px; }
+  .menu-category h4{
+    font-family:'DM Mono', monospace; font-size:0.74rem; letter-spacing:0.14em;
+    text-transform:uppercase; opacity:0.55; margin:22px 0 12px;
+  }
+  .menu-category:first-child h4{ margin-top:0; }
+
+  .order-item{
+    display:flex; align-items:center; gap:14px;
+    padding:14px 0; border-bottom:1px solid var(--line-on-cream);
+  }
+  .order-item__icon{
+    width:50px; height:50px; border-radius:14px; flex:none;
+    background:var(--cream-dim); display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem;
+  }
+  .order-item__info{ flex:1; min-width:0; }
+  .order-item__info .name{ font-weight:700; font-size:0.96rem; }
+  .order-item__info .desc{ font-size:0.8rem; opacity:0.65; margin-top:2px; }
+  .order-item__info .price{ font-family:'DM Mono', monospace; font-size:0.85rem; color:var(--pepper); margin-top:4px; }
+  .order-item__action{ flex:none; }
+  .mini-tag{
+    font-family:'DM Mono', monospace; font-size:0.6rem; background:var(--gold); color:var(--indigo-deep);
+    padding:2px 7px; border-radius:999px; vertical-align:middle; margin-left:6px; letter-spacing:0.02em;
+  }
+
+  .add-btn{
+    flex:none; background:var(--indigo); color:var(--cream);
+    border:0; padding:9px 16px; border-radius:999px; font-weight:700; font-size:0.84rem;
+    cursor:pointer; transition:background .2s ease, transform .2s ease; font-family:inherit;
+  }
+  .add-btn:hover{ background:var(--indigo-deep); transform:translateY(-1px); }
+
+  .qty-stepper{
+    flex:none; display:flex; align-items:center; gap:0;
+    background:var(--indigo); border-radius:999px; overflow:hidden;
+  }
+  .qty-stepper button{
+    width:32px; height:32px; border:0; background:none; color:var(--cream);
+    font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease; font-family:inherit;
+  }
+  .qty-stepper button:hover{ background:rgba(251,244,230,0.15); }
+  .qty-stepper .qty-num{
+    min-width:24px; text-align:center; color:var(--cream); font-family:'DM Mono', monospace; font-size:0.88rem;
+  }
+
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; background:none; border:0;
+    color:var(--charcoal); opacity:0.65; font-size:0.85rem; cursor:pointer; padding:4px 0 16px;
+    font-family:inherit;
+  }
+  .back-link:hover{ opacity:1; }
+
+  .empty-cart{ text-align:center; padding:50px 10px; opacity:0.6; }
+  .empty-cart .big{ font-size:2.4rem; margin-bottom:10px; }
+
+  .cart-line{
+    display:flex; align-items:center; gap:12px; padding:14px 0;
+    border-bottom:1px solid var(--line-on-cream);
+  }
+  .cart-line__info{ flex:1; min-width:0; }
+  .cart-line__info .name{ font-weight:700; font-size:0.9rem; }
+  .cart-line__info .unit{ font-size:0.74rem; opacity:0.6; margin-top:2px; }
+  .cart-line__stepper{ flex:none; }
+  .cart-line__total{
+    flex:none; font-family:'DM Mono', monospace; font-size:0.85rem; font-weight:600; min-width:60px; text-align:right;
+  }
+  .remove-btn{
+    flex:none; background:none; border:0; color:var(--pepper); cursor:pointer;
+    font-size:0.95rem; padding:6px; opacity:0.7; transition:opacity .2s ease; font-family:inherit;
+  }
+  .remove-btn:hover{ opacity:1; }
+
+  .upsell{ margin:24px 0 4px; }
+  .upsell h4{ font-family:'DM Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.55; margin-bottom:10px; }
+  .upsell-row{ display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; }
+  .upsell-chip{
+    flex:none; display:flex; align-items:center; gap:7px;
+    background:var(--cream-dim); border:1px solid var(--line-on-cream);
+    padding:9px 14px 9px 10px; border-radius:999px; font-size:0.78rem; cursor:pointer;
+    white-space:nowrap; transition:background .2s ease; font-family:inherit;
+  }
+  .upsell-chip:hover{ background:var(--gold); }
+  .upsell-chip .em{ font-size:1.05rem; }
+
+  .order-type{
+    display:flex; gap:10px; margin:22px 0 4px; background:var(--cream-dim);
+    padding:5px; border-radius:14px;
+  }
+  .order-type button{
+    flex:1; border:0; background:none; padding:12px 10px; border-radius:10px;
+    font-weight:700; font-size:0.86rem; cursor:pointer; color:var(--charcoal);
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    transition:background .2s ease, color .2s ease; font-family:inherit;
+  }
+  .order-type button .sub{ font-family:'DM Mono', monospace; font-weight:500; font-size:0.7rem; opacity:0.65; }
+  .order-type button.active{ background:var(--indigo); color:var(--cream); }
+  .order-type button.active .sub{ color:var(--gold-bright); opacity:0.9; }
+
+  .address-field{ margin:18px 0 4px; }
+  .address-field label{ font-family:'DM Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.6; }
+  .address-field input{
+    width:100%; margin-top:8px; padding:13px 14px; border-radius:12px;
+    border:1px solid var(--line-on-cream); background:#fff; font-family:'Work Sans', sans-serif;
+    font-size:0.92rem; color:var(--charcoal);
+  }
+  .address-field input:focus{ outline:2px solid var(--gold); border-color:transparent; }
+  .address-field.error input{ border-color:var(--pepper); }
+  .address-field .err-msg{ display:none; color:var(--pepper); font-size:0.76rem; margin-top:6px; }
+  .address-field.error .err-msg{ display:block; }
+
+  .totals{ margin:22px 0 18px; padding-top:14px; border-top:1px dashed var(--line-on-cream); }
+  .totals-row{ display:flex; justify-content:space-between; font-size:0.88rem; padding:5px 0; opacity:0.8; }
+  .totals-row.grand{ font-size:1.1rem; font-weight:800; opacity:1; padding-top:10px; border-top:1px solid var(--line-on-cream); margin-top:6px; }
+  .totals-row.grand .mono{ color:var(--pepper); }
+
+  .order-modal__footer{ flex:none; padding:16px 22px; border-top:1px solid var(--line-on-cream); background:var(--cream); }
+  .place-order-btn{
+    width:100%; padding:16px; border:0; border-radius:999px;
+    background:var(--gold); color:var(--indigo-deep); font-weight:800; font-size:1rem;
+    cursor:pointer; transition:background .2s ease, transform .2s ease;
+    display:flex; align-items:center; justify-content:center; gap:8px; font-family:inherit;
+  }
+  .place-order-btn:hover{ background:var(--gold-bright); transform:translateY(-1px); }
+  .place-order-btn:disabled{ background:var(--cream-dim); color:rgba(36,27,20,0.4); cursor:not-allowed; transform:none; }
+
+  /* tracking view */
+  .order-confirm-banner{ text-align:center; padding:8px 0 22px; }
+  .order-confirm-banner .em{ font-size:2.6rem; }
+  .order-confirm-banner h3{ font-family:'Anton', sans-serif; font-size:1.5rem; margin-top:8px; }
+  .order-confirm-banner p{ font-size:0.85rem; opacity:0.65; margin-top:6px; }
+  .order-confirm-banner .pay-status{ opacity:0.85; font-weight:600; }
+
+  /* payment view */
+  .pay-summary{ background:var(--cream-dim); border-radius:14px; padding:16px 18px; margin-top:2px; }
+  .pay-summary__row{ display:flex; justify-content:space-between; font-size:0.86rem; padding:5px 0; opacity:0.8; }
+  .pay-summary__row.grand{ font-size:1.05rem; font-weight:800; opacity:1; padding-top:10px; margin-top:6px; border-top:1px solid var(--line-on-cream); }
+  .pay-summary__row.grand .mono{ color:var(--pepper); }
+
+  .transfer-card, .cash-card{ display:none; margin-top:22px; }
+  .transfer-card.show, .cash-card.show{ display:block; animation:view-in .25s ease; }
+
+  .transfer-card{ background:var(--indigo); color:var(--cream); border-radius:16px; padding:20px; }
+  .transfer-note{ font-size:0.82rem; opacity:0.78; margin-bottom:10px; }
+  .transfer-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px 0; border-bottom:1px solid var(--line-on-indigo); flex-wrap:wrap;
+  }
+  .transfer-row:last-child{ border-bottom:0; }
+  .transfer-row .label{ font-family:'DM Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.6; }
+  .transfer-row .value{ font-weight:700; font-size:0.95rem; text-align:right; }
+  .transfer-row.amount .value{ color:var(--gold-bright); font-size:1.2rem; }
+  .copy-btn{
+    background:rgba(251,244,230,0.12); border:1px solid var(--line-on-indigo); color:var(--cream);
+    padding:6px 13px; border-radius:999px; font-size:0.72rem; font-weight:700; cursor:pointer;
+    font-family:inherit; transition:background .2s ease;
+  }
+  .copy-btn:hover{ background:rgba(251,244,230,0.22); }
+  .copy-btn.copied{ background:var(--gold); color:var(--indigo-deep); border-color:transparent; }
+
+  .cash-card{
+    background:var(--cream-dim); border:1px solid var(--line-on-cream); border-radius:16px;
+    padding:24px 20px; text-align:center;
+  }
+  .cash-card__icon{ font-size:2rem; margin-bottom:8px; }
+  .cash-card p{ font-size:0.92rem; opacity:0.85; }
+  .cash-card strong{ color:var(--pepper); }
+
+  /* contact sheet */
+  .contact-body{ padding-bottom:26px; }
+  .contact-phone-row{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--cream-dim); border-radius:14px; padding:14px 16px; margin-bottom:20px;
+  }
+  .contact-phone-num{ font-size:1.05rem; font-weight:700; letter-spacing:0.02em; }
+  .contact-options{ display:flex; flex-direction:column; gap:12px; }
+  .contact-option{
+    display:flex; align-items:center; gap:14px;
+    background:var(--indigo); color:var(--cream);
+    border-radius:16px; padding:16px 18px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .contact-option:hover{ background:var(--indigo-deep); transform:translateY(-2px); }
+  .contact-option__icon{ font-size:1.6rem; flex:none; }
+  .contact-option__text{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+  .contact-option__text strong{ font-size:0.98rem; }
+  .contact-option__text span{ font-size:0.78rem; opacity:0.7; }
+  .contact-option__arrow{ flex:none; font-size:1.2rem; color:var(--gold-bright); }
+
+  .timeline{ margin:10px 0 26px; }
+  .tl-stage{ display:flex; gap:16px; position:relative; padding-bottom:30px; }
+  .tl-stage:last-child{ padding-bottom:0; }
+  .tl-stage::before{
+    content:""; position:absolute; left:18px; top:38px; bottom:-4px; width:2px;
+    background:var(--line-on-cream);
+  }
+  .tl-stage:last-child::before{ display:none; }
+  .tl-stage.done::before{ background:var(--gold); }
+  .tl-icon{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    background:var(--cream-dim); border:2px solid var(--line-on-cream);
+    display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+    z-index:1;
+  }
+  .tl-stage.active .tl-icon{
+    border-color:var(--gold); background:var(--gold); transform:scale(1.08);
+    animation:tl-pulse 1.4s infinite;
+  }
+  @keyframes tl-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(232,180,0,0.45); }
+    70%{ box-shadow:0 0 0 10px rgba(232,180,0,0); }
+    100%{ box-shadow:0 0 0 0 rgba(232,180,0,0); }
+  }
+  .tl-stage.done .tl-icon{ border-color:var(--gold); background:var(--indigo); }
+  .tl-content{ padding-top:5px; }
+  .tl-content .label{ font-weight:700; font-size:0.94rem; }
+  .tl-stage.pending .tl-content .label{ opacity:0.45; }
+  .tl-content .sub{ font-size:0.78rem; opacity:0.6; margin-top:2px; font-family:'DM Mono', monospace; }
+  .tl-stage.active .tl-content .sub{ color:var(--pepper); opacity:1; }
+
+  .enjoy-card{
+    display:none; text-align:center; background:var(--indigo);
+    color:var(--cream); border-radius:18px; padding:30px 20px; margin-top:8px;
+  }
+  .enjoy-card.show{ display:block; animation:enjoy-in .5s ease; }
+  @keyframes enjoy-in{ from{ opacity:0; transform:scale(0.9);} to{ opacity:1; transform:scale(1);} }
+  .enjoy-card .em{ font-size:2.6rem; }
+  .enjoy-card h3{ font-family:'Anton', sans-serif; color:var(--gold-bright); font-size:1.4rem; margin-top:6px; }
+  .enjoy-card p{ font-size:0.88rem; opacity:0.82; margin-top:8px; }
+
+  .new-order-btn{
+    display:none; width:100%; margin-top:18px; padding:15px; border:0; border-radius:999px;
+    background:var(--indigo); color:var(--cream); font-weight:700; cursor:pointer;
+    transition:background .2s ease; font-family:inherit;
+  }
+  .new-order-btn.show{ display:block; }
+  .new-order-btn:hover{ background:var(--indigo-deep); }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <span class="display">Albaik Chicken</span>
+        <span class="mono">GWARZO ROAD · KANO</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><button type="button" onclick="openContactSheet()">Call</button></li>
+        <li><button type="button" class="nav-cta" onclick="openOrderModal()">🛒 Order Now<span class="cart-badge" id="navCartBadge" hidden>0</span></button></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="hero-badge-row">
+          <span class="open-pill"><span class="pulse-dot"></span> Open now · 24 hours</span>
+          <span class="rating-pill">
+            <span class="stars"><span class="stars-bg">★★★★★</span><span class="stars-fg">★★★★★</span></span>
+            4.1 (171 reviews)
+          </span>
+        </div>
+        <h1 class="display reveal">Fried fresh.<br>Served fast.<br><span>Never closed.</span></h1>
+        <p class="lede reveal reveal-delay-1">Kano's all-day chicken spot on Gwarzo Road — crispy fried chicken, peppered liver-sauce rice, and shawarma wrapped fresh, any hour you're craving it.</p>
+        <div class="hero-ctas reveal reveal-delay-2">
+          <button type="button" class="btn btn-primary" onclick="openOrderModal()">🛒 Order Now</button>
+          <button type="button" class="btn btn-ghost" onclick="openContactSheet()">📞 Call to Order</button>
+        </div>
+        <p class="hero-price reveal reveal-delay-3">Average cost per person <span class="mono">₦1,000 – ₦10,000</span> · Dine-in · Drive-through · Delivery</p>
+      </div>
+      <div class="stamp-wrap">
+        <svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Albaik Chicken seal — open 24 hours, Kano Nigeria">
+          <defs>
+            <path id="circleTop" d="M 24,100 A 76,76 0 1,1 176,100" />
+            <path id="circleBottom" d="M 176,103 A 76,76 0 1,1 24,103" />
+          </defs>
+          <circle cx="100" cy="100" r="92" class="stamp-ring-outer"/>
+          <circle cx="100" cy="100" r="78" class="stamp-ring-inner"/>
+          <text class="stamp-text"><textPath href="#circleTop" startOffset="50%" text-anchor="middle">OPEN 24 HOURS</textPath></text>
+          <text class="stamp-text"><textPath href="#circleBottom" startOffset="50%" text-anchor="middle">• KANO NIGERIA •</textPath></text>
+          <text x="100" y="98" text-anchor="middle" class="stamp-center">ALBAIK</text>
+          <text x="100" y="120" text-anchor="middle" class="stamp-sub">CHICKEN · EST. KANO</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Crispy Fried Chicken</span><span>White Rice &amp; Liver Sauce</span><span>Shawarma</span><span>Chicken Burgers</span><span>Open 24 Hours</span><span>Drive-Through Ready</span>
+      <span>Crispy Fried Chicken</span><span>White Rice &amp; Liver Sauce</span><span>Shawarma</span><span>Chicken Burgers</span><span>Open 24 Hours</span><span>Drive-Through Ready</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-copy reveal">
+        <p class="eyebrow">About the kitchen</p>
+        <h2 class="display">A Gwarzo Road regular's favourite</h2>
+        <p>Locals know Albaik Chicken as the clean, easygoing spot where the chicken is always crispy and the rice never runs out. Whether you're stopping by after work, swinging through the drive-through at midnight, or sending delivery to your doorstep, the kitchen doesn't stop — 24 hours, every single day.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="num">4.1</div><div class="label mono">Star rating</div></div>
+          <div class="stat"><div class="num">171</div><div class="label mono">Reviews</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="label mono">Always open</div></div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#FFE402" stroke-width="1.5" stroke-dasharray="2 4"/>
+          <path d="M50 22c8 0 13 6 13 13 0 5-3 8-3 12 0 5 4 7 4 13 0 9-7 16-14 16s-14-7-14-16c0-6 4-8 4-13 0-4-3-7-3-12 0-7 5-13 13-13z" fill="#E8B400"/>
+          <path d="M44 60c-2 6-2 11 1 16 2-4 2-9 1-14" fill="#DE413A" opacity="0.85"/>
+          <path d="M56 60c2 6 2 11-1 16-2-4-2-9-1-14" fill="#DE413A" opacity="0.85"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap reveal">
+      <p class="eyebrow">Why Gwarzo Road keeps coming back</p>
+      <div class="chips">
+        <span class="chip">Generous rice portions</span>
+        <span class="chip">Easy on the wallet</span>
+        <span class="chip">Quick in, quick out</span>
+        <span class="chip">Local &amp; international plates</span>
+        <span class="chip">Spotless dining room</span>
+        <span class="chip">Friendly faces, every visit</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="zigzag" aria-hidden="true"></div>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow on-indigo">What's cooking</p>
+        <h2 class="display">Menu highlights</h2>
+        <p>A few of the plates Gwarzo Road orders on repeat. Full menu and daily specials in-store and by phone.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card reveal reveal-delay-1">
+          <div class="menu-card__icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M8 28 A24 20 0 0 0 56 28 Z" fill="var(--gold)"/>
+              <rect x="6" y="26" width="52" height="6" rx="3" fill="var(--gold)"/>
+              <ellipse cx="32" cy="22" rx="15" ry="9" fill="var(--cream)"/>
+              <path d="M38 15c3 1 5 4 4 7-3 0-6-2-7-5" fill="var(--pepper)"/>
+            </svg>
+          </div>
+          <span class="tag">Most Ordered</span>
+          <h3>White Rice, Liver Sauce &amp; Chicken</h3>
+          <p>Fluffy white rice, rich peppered liver sauce, and a generous cut of chicken — the dish regulars never skip.</p>
+        </div>
+        <div class="menu-card reveal reveal-delay-2">
+          <div class="menu-card__icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M40 14c6 4 8 12 4 18-3 4-3 8 0 12 3 4 1 9-4 10-5 1-9-3-9-8 0-3-2-5-5-6-6-2-9-9-6-15 3-6 12-15 20-11z" fill="var(--gold)"/>
+              <path d="M22 46c-3 3-5 7-4 11" fill="none" stroke="var(--cream)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="36" cy="24" r="2" fill="var(--cream)" opacity="0.6"/>
+              <circle cx="42" cy="32" r="2" fill="var(--cream)" opacity="0.6"/>
+            </svg>
+          </div>
+          <span class="tag">Signature</span>
+          <h3>Crispy Fried Chicken</h3>
+          <p>Golden, crackling, and seasoned all the way through — the bucket that built the name.</p>
+        </div>
+        <div class="menu-card reveal reveal-delay-3">
+          <div class="menu-card__icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="22" width="44" height="20" rx="10" transform="rotate(-35 32 33)" fill="var(--gold)"/>
+              <circle cx="48.5" cy="17.5" r="9" transform="rotate(-35 32 33)" fill="var(--cream)"/>
+              <rect x="10" y="27" width="34" height="3" rx="1.5" transform="rotate(-35 32 33)" fill="var(--cream)" opacity="0.8"/>
+              <rect x="10" y="34" width="34" height="3" rx="1.5" transform="rotate(-35 32 33)" fill="var(--pepper)" opacity="0.85"/>
+            </svg>
+          </div>
+          <span class="tag">Grab &amp; Go</span>
+          <h3>Shawarma</h3>
+          <p>Wrapped fresh to order and packed with sauce — built for the drive-through window.</p>
+        </div>
+        <div class="menu-card reveal reveal-delay-4">
+          <div class="menu-card__icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M8 28 A24 16 0 0 1 56 28 Z" fill="var(--gold)"/>
+              <rect x="7" y="29" width="50" height="6" rx="3" fill="var(--cream)"/>
+              <rect x="7" y="37" width="50" height="7" rx="3" fill="var(--pepper)"/>
+              <rect x="7" y="46" width="50" height="6" rx="3" fill="var(--gold)"/>
+              <rect x="5" y="53" width="54" height="6" rx="3" fill="var(--gold)"/>
+            </svg>
+          </div>
+          <span class="tag">Customer Favorite</span>
+          <h3>Chicken Burger</h3>
+          <p>A juicy patty stacked high, for when rice isn't the move.</p>
+        </div>
+      </div>
+      <p class="menu-note">Prices range ₦1,000 – ₦10,000 per person depending on order. Ask staff about today's specials.</p>
+      <div class="menu-cta reveal">
+        <button type="button" class="btn btn-primary" onclick="openOrderModal()">🛒 Order Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Word on Gwarzo Road</p>
+        <h2 class="display">What customers are saying</h2>
+      </div>
+      <div class="review-summary reveal">
+        <div class="score">4.1</div>
+        <div>
+          <span class="stars"><span class="stars-bg">★★★★★</span><span class="stars-fg">★★★★★</span></span>
+          <div class="score-meta">Based on 171 Google reviews</div>
+        </div>
+      </div>
+      <div class="review-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="stars-row"><span class="stars"><span class="stars-bg">★★★★★</span><span class="stars-fg" style="width:80%">★★★★★</span></span></div>
+          <p class="quote">Praised the restaurant's clean, welcoming space and called the food consistently delicious.</p>
+          <div class="who">
+            <div class="avatar">J</div>
+            <div><div class="name">Jacky Chou</div><div class="meta">Local Guide · 167 reviews</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="stars-row"><span class="stars"><span class="stars-bg">★★★★★</span><span class="stars-fg" style="width:90%">★★★★★</span></span></div>
+          <p class="quote">Calls it a go-to Gwarzo Road eatery known for its range of chicken dishes, from fried chicken to shawarma and burgers.</p>
+          <div class="who">
+            <div class="avatar">S</div>
+            <div><div class="name">Sadiq Dandago</div><div class="meta">Local Guide · 87 reviews</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="stars-row"><span class="stars"><span class="stars-bg">★★★★★</span><span class="stars-fg" style="width:100%">★★★★★</span></span></div>
+          <p class="quote">Says the service is friendly and personal, with consistently great food on every visit.</p>
+          <div class="who">
+            <div class="avatar">S</div>
+            <div><div class="name">Sulaiman Usman Ardo</div><div class="meta">1 review · 4 photos</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Find us, any hour</p>
+        <h2 class="display">Visit Albaik Chicken</h2>
+
+        <div class="info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div><div class="label">Address</div><div class="value">Gwarzo Road, Kano 700282, Kano State · Plus Code XFJ8+8MF</div></div>
+        </div>
+        <div class="info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><div class="label">Hours</div><div class="value">Open 24 hours, every day</div></div>
+        </div>
+        <div class="info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="label">Phone</div><div class="value">0705 793 7677</div></div>
+        </div>
+
+        <div class="visit-ctas">
+          <button type="button" class="btn btn-primary" onclick="openContactSheet()">📞 Call to Order</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Albaik+Chicken%2C+Gwarzo+Road%2C+Kano%2C+Nigeria" target="_blank" rel="noopener" class="btn btn-pepper">📍 Get Directions</a>
+        </div>
+      </div>
+
+      <div class="services reveal reveal-delay-2">
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l2-6h14l2 6"/><path d="M3 11v7h18v-7"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+          <div><h3>Dine-in</h3><p>Clean, comfortable seating for a sit-down plate.</p></div>
+        </div>
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h13l4-4M3 12h13l4 4"/></svg>
+          <div><h3>Drive-through</h3><p>Stay in the car, order at the window, go.</p></div>
+        </div>
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5z"/><circle cx="7" cy="19" r="1.6"/><circle cx="17.5" cy="19" r="1.6"/></svg>
+          <div><h3>Delivery</h3><p>Hot plates sent straight to your door.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="display">Albaik Chicken</div>
+        <div class="fine">Gwarzo Road, Kano · Open 24 hours · © 2026</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><button type="button" onclick="openContactSheet()">0705 793 7677</button></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <button type="button" class="call" onclick="openOrderModal()">🛒 Order Now</button>
+    <button type="button" class="dir" onclick="openContactSheet()">📞 Call</button>
+  </div>
+
+  <div class="order-overlay" id="orderOverlay">
+    <div class="order-modal" role="dialog" aria-modal="true" aria-label="Order online">
+
+      <div class="order-modal__header">
+        <div class="order-modal__title">
+          <span class="display" id="modalViewTitle">Order Online</span>
+          <span class="mono">ALBAIK CHICKEN · GWARZO ROAD</span>
+        </div>
+        <div class="order-modal__actions">
+          <button type="button" class="icon-btn" id="modalCartBtn" onclick="goToCart()" aria-label="View cart">
+            🛒<span class="cart-badge" id="modalCartBadge" hidden>0</span>
+          </button>
+          <button type="button" class="icon-btn" onclick="closeOrderModal()" aria-label="Close order panel">✕</button>
+        </div>
+      </div>
+
+      <div class="order-modal__body">
+
+        <div class="order-view active" id="view-menu">
+          <div id="menuList"></div>
+        </div>
+
+        <div class="order-view" id="view-cart">
+          <button type="button" class="back-link" onclick="showView('menu')">← Back to menu</button>
+          <div id="cartList"></div>
+
+          <div class="upsell" id="upsellBlock" style="display:none;">
+            <h4>Add to your order</h4>
+            <div class="upsell-row" id="upsellRow"></div>
+          </div>
+
+          <div class="order-type">
+            <button type="button" id="typeDelivery" class="active">🛵 Delivery<span class="sub">+ ₦700 fee</span></button>
+            <button type="button" id="typePickup">🏪 Pickup<span class="sub">No fee</span></button>
+          </div>
+
+          <div class="address-field" id="addressField">
+            <label for="addressInput">Delivery address</label>
+            <input type="text" id="addressInput" placeholder="e.g. Off Gwarzo Road, near...">
+            <div class="err-msg">Please add an address so your courier can find you.</div>
+          </div>
+
+          <div class="totals">
+            <div class="totals-row"><span>Subtotal</span><span class="mono" id="subtotalVal">₦0</span></div>
+            <div class="totals-row" id="feeRow"><span>Delivery fee</span><span class="mono" id="feeVal">₦0</span></div>
+            <div class="totals-row grand"><span>Total</span><span class="mono" id="totalVal">₦0</span></div>
+          </div>
+        </div>
+
+        <div class="order-view" id="view-payment">
+          <button type="button" class="back-link" onclick="showView('cart')">← Back to cart</button>
+
+          <div class="pay-summary">
+            <div class="pay-summary__row"><span>Items</span><span class="mono" id="paySummaryCount">0</span></div>
+            <div class="pay-summary__row"><span id="paySummaryTypeLabel">Delivery to</span><span class="mono" id="paySummaryType">—</span></div>
+            <div class="pay-summary__row grand"><span>Total to pay</span><span class="mono" id="paySummaryTotal">₦0</span></div>
+          </div>
+
+          <div class="order-type">
+            <button type="button" id="payTransfer" class="active">🏦 Bank Transfer</button>
+            <button type="button" id="payCash">💵 <span id="payCashLabel">Pay on Delivery</span></button>
+          </div>
+
+          <div class="transfer-card" id="transferCard">
+            <p class="transfer-note">Send the exact amount below, then confirm — we'll start preparing your order right away.</p>
+            <div class="transfer-row"><span class="label">Bank</span><span class="value" id="bankName">—</span></div>
+            <div class="transfer-row">
+              <span class="label">Account No.</span>
+              <span class="value mono" id="bankAcctNum">—</span>
+              <button type="button" class="copy-btn" id="copyAcctBtn">Copy</button>
+            </div>
+            <div class="transfer-row"><span class="label">Account Name</span><span class="value" id="bankAcctName">—</span></div>
+            <div class="transfer-row amount"><span class="label">Amount</span><span class="value mono" id="transferAmount">₦0</span></div>
+          </div>
+
+          <div class="cash-card" id="cashCard">
+            <div class="cash-card__icon">💵</div>
+            <p>Have <strong id="cashAmount">₦0</strong> ready. You'll pay when your order <span id="cashWhen">arrives</span>.</p>
+          </div>
+        </div>
+
+        <div class="order-view" id="view-tracking">
+          <div class="order-confirm-banner">
+            <div class="em">🎉</div>
+            <h3>Order placed!</h3>
+            <p class="mono">Order <span id="orderIdVal">#AB-0000</span> · <span id="orderTypeVal">Delivery</span></p>
+            <p class="pay-status" id="orderPaymentVal">💵 Pay on delivery</p>
+          </div>
+          <div class="timeline" id="timeline"></div>
+          <div class="enjoy-card" id="enjoyCard">
+            <div class="em">🍗</div>
+            <h3>Enjoy your meal!</h3>
+            <p>Thank you for ordering from Albaik Chicken. We hope every bite hits the spot.</p>
+          </div>
+          <button type="button" class="new-order-btn" id="newOrderBtn">Start a new order</button>
+        </div>
+
+      </div>
+
+      <div class="order-modal__footer" id="modalFooter">
+        <button type="button" class="place-order-btn" id="viewCartBtn" onclick="goToCart()">
+          View Cart · <span id="footerCount">0</span> item(s) · <span class="mono" id="footerSubtotal">₦0</span>
+        </button>
+        <button type="button" class="place-order-btn" id="continueBtn" style="display:none;" onclick="continueToPayment()" disabled>
+          Continue to Payment
+        </button>
+        <button type="button" class="place-order-btn" id="confirmPaymentBtn" style="display:none;" onclick="confirmPaymentAndPlaceOrder()">
+          I've Sent the Transfer ✅
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="order-overlay" id="contactOverlay">
+    <div class="order-modal contact-modal" role="dialog" aria-modal="true" aria-label="Contact Albaik Chicken">
+      <div class="order-modal__header">
+        <div class="order-modal__title">
+          <span class="display">Get in Touch</span>
+          <span class="mono">ALBAIK CHICKEN · GWARZO ROAD</span>
+        </div>
+        <div class="order-modal__actions">
+          <button type="button" class="icon-btn" onclick="closeContactSheet()" aria-label="Close contact options">✕</button>
+        </div>
+      </div>
+
+      <div class="order-modal__body contact-body">
+        <div class="contact-phone-row">
+          <span class="contact-phone-num mono">0705 793 7677</span>
+          <button type="button" class="add-btn" id="copyPhoneBtn">Copy</button>
+        </div>
+
+        <div class="contact-options">
+          <a href="tel:+2347057937677" class="contact-option">
+            <span class="contact-option__icon">📞</span>
+            <span class="contact-option__text"><strong>Call Now</strong><span>Speak to us directly</span></span>
+            <span class="contact-option__arrow">→</span>
+          </a>
+          <a href="https://wa.me/2347057937677?text=Hi%2C%20I%27d%20like%20to%20place%20an%20order%20from%20Albaik%20Chicken" target="_blank" rel="noopener" class="contact-option">
+            <span class="contact-option__icon">💬</span>
+            <span class="contact-option__text"><strong>Message on WhatsApp</strong><span>Chat with us anytime</span></span>
+            <span class="contact-option__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var revealEls = document.querySelectorAll('.reveal');
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(function (el) { el.classList.add('in-view'); });
+    } else {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(function (el) { observer.observe(el); });
+    }
+
+    var navToggle = document.querySelector('.nav-toggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      navLinks.querySelectorAll('a, button').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+</script>
+
+<script>
+  /* ================= ORDER SYSTEM ================= */
+  var MENU = [
+    { id:'rice-liver', name:'White Rice, Liver Sauce & Chicken', desc:'Fluffy rice, peppered liver sauce, chicken cut', price:2500, cat:'Mains', icon:'🍚', tag:'Most Ordered' },
+    { id:'fried-2pc', name:'Crispy Fried Chicken (2pc)', desc:'Golden, crackling, seasoned through', price:2000, cat:'Mains', icon:'🍗', tag:'Signature' },
+    { id:'fried-4pc', name:'Crispy Fried Chicken (4pc)', desc:'Sharing size — same crisp, more chicken', price:3500, cat:'Mains', icon:'🍗' },
+    { id:'shawarma', name:'Chicken Shawarma', desc:'Wrapped fresh to order, packed with sauce', price:1800, cat:'Mains', icon:'🌯' },
+    { id:'burger', name:'Chicken Burger', desc:'Juicy patty, stacked high', price:2200, cat:'Mains', icon:'🍔' },
+    { id:'chips', name:'Chips', desc:'Crisp, golden, salted just right', price:1000, cat:'Sides', icon:'🍟' },
+    { id:'coleslaw', name:'Coleslaw', desc:'Cool, creamy, crunchy', price:800, cat:'Sides', icon:'🥗' },
+    { id:'soft-drink', name:'Soft Drink', desc:'Chilled can', price:500, cat:'Drinks', icon:'🥤' },
+    { id:'zobo', name:'Zobo', desc:'House-made, chilled', price:700, cat:'Drinks', icon:'🧃' }
+  ];
+
+  var cart = {};
+  var orderType = 'delivery';
+  var DELIVERY_FEE = 700;
+  var trackingTimers = [];
+
+  function money(n){ return '₦' + n.toLocaleString('en-NG'); }
+  function cartCount(){ return Object.keys(cart).reduce(function(a,id){ return a+cart[id]; }, 0); }
+  function cartSubtotal(){
+    return Object.keys(cart).reduce(function(sum,id){
+      var item = MENU.find(function(m){ return m.id===id; });
+      return sum + (item ? item.price * cart[id] : 0);
+    }, 0);
+  }
+
+  function updateCartBadge(){
+    var n = cartCount();
+    [document.getElementById('navCartBadge'), document.getElementById('modalCartBadge')].forEach(function(b){
+      if(!b) return;
+      if(n > 0){ b.hidden = false; b.textContent = n; } else { b.hidden = true; }
+    });
+    var fc = document.getElementById('footerCount');
+    var fs = document.getElementById('footerSubtotal');
+    if(fc) fc.textContent = n;
+    if(fs) fs.textContent = money(cartSubtotal());
+  }
+
+  function anyOverlayOpen(){
+    return ['orderOverlay','contactOverlay'].some(function(id){
+      var el = document.getElementById(id);
+      return el && el.classList.contains('open');
+    });
+  }
+  function syncBodyScrollLock(){
+    document.body.style.overflow = anyOverlayOpen() ? 'hidden' : '';
+  }
+
+  function openOrderModal(){
+    document.getElementById('orderOverlay').classList.add('open');
+    syncBodyScrollLock();
+    showView('menu');
+    renderMenu();
+  }
+  function closeOrderModal(){
+    document.getElementById('orderOverlay').classList.remove('open');
+    syncBodyScrollLock();
+  }
+
+  function openContactSheet(){
+    document.getElementById('contactOverlay').classList.add('open');
+    syncBodyScrollLock();
+  }
+  function closeContactSheet(){
+    document.getElementById('contactOverlay').classList.remove('open');
+    syncBodyScrollLock();
+  }
+
+  function showView(name){
+    ['menu','cart','payment','tracking'].forEach(function(v){
+      var el = document.getElementById('view-'+v);
+      if(el) el.classList.toggle('active', v===name);
+    });
+    var titleMap = { menu:'Order Online', cart:'Your Cart', payment:'Payment', tracking:'Order Status' };
+    var title = document.getElementById('modalViewTitle');
+    if(title) title.textContent = titleMap[name] || 'Order Online';
+
+    var cartIcon = document.getElementById('modalCartBtn');
+    if(cartIcon) cartIcon.style.display = name==='tracking' ? 'none' : 'flex';
+
+    var footer = document.getElementById('modalFooter');
+    var viewCartBtn = document.getElementById('viewCartBtn');
+    var continueBtn = document.getElementById('continueBtn');
+    var confirmPaymentBtn = document.getElementById('confirmPaymentBtn');
+    viewCartBtn.style.display = 'none';
+    continueBtn.style.display = 'none';
+    confirmPaymentBtn.style.display = 'none';
+
+    if(name==='menu'){
+      footer.style.display='block'; viewCartBtn.style.display='flex';
+    } else if(name==='cart'){
+      footer.style.display='block'; continueBtn.style.display='flex';
+    } else if(name==='payment'){
+      footer.style.display='block'; confirmPaymentBtn.style.display='flex';
+    } else {
+      footer.style.display='none';
+    }
+  }
+
+  function renderMenu(){
+    var cats = ['Mains','Sides','Drinks'];
+    var container = document.getElementById('menuList');
+    container.innerHTML = '';
+    cats.forEach(function(cat){
+      var items = MENU.filter(function(m){ return m.cat===cat; });
+      if(!items.length) return;
+      var block = document.createElement('div');
+      block.className = 'menu-category';
+      var h = document.createElement('h4');
+      h.textContent = cat;
+      block.appendChild(h);
+      items.forEach(function(item){ block.appendChild(buildOrderItemRow(item)); });
+      container.appendChild(block);
+    });
+  }
+
+  function buildOrderItemRow(item){
+    var row = document.createElement('div');
+    row.className = 'order-item';
+    var qty = cart[item.id] || 0;
+    row.innerHTML =
+      '<div class="order-item__icon">'+item.icon+'</div>'+
+      '<div class="order-item__info">'+
+        '<div class="name">'+item.name+(item.tag ? ' <span class="mini-tag">'+item.tag+'</span>' : '')+'</div>'+
+        '<div class="desc">'+item.desc+'</div>'+
+        '<div class="price">'+money(item.price)+'</div>'+
+      '</div>'+
+      '<div class="order-item__action"></div>';
+    row.querySelector('.order-item__action').appendChild(qty > 0 ? buildStepper(item.id) : buildAddBtn(item.id));
+    return row;
+  }
+
+  function buildAddBtn(id){
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'add-btn'; btn.textContent = 'Add';
+    btn.addEventListener('click', function(){ changeQty(id, 1); renderMenu(); renderCart(); });
+    return btn;
+  }
+
+  function buildStepper(id){
+    var wrap = document.createElement('div');
+    wrap.className = 'qty-stepper';
+    var minus = document.createElement('button');
+    minus.type='button'; minus.textContent='–'; minus.setAttribute('aria-label','Remove one');
+    minus.addEventListener('click', function(){ changeQty(id,-1); renderMenu(); renderCart(); });
+    var num = document.createElement('span');
+    num.className='qty-num'; num.textContent = cart[id] || 0;
+    var plus = document.createElement('button');
+    plus.type='button'; plus.textContent='+'; plus.setAttribute('aria-label','Add one more');
+    plus.addEventListener('click', function(){ changeQty(id,1); renderMenu(); renderCart(); });
+    wrap.appendChild(minus); wrap.appendChild(num); wrap.appendChild(plus);
+    return wrap;
+  }
+
+  function changeQty(id, delta){
+    var next = (cart[id]||0) + delta;
+    if(next <= 0){ delete cart[id]; } else { cart[id] = next; }
+    updateCartBadge();
+  }
+
+  function removeFromCart(id){
+    delete cart[id];
+    updateCartBadge();
+    renderCart();
+  }
+
+  function renderCart(){
+    var listEl = document.getElementById('cartList');
+    if(!listEl) return;
+    var ids = Object.keys(cart);
+    listEl.innerHTML = '';
+
+    if(!ids.length){
+      listEl.innerHTML = '<div class="empty-cart"><div class="big">🛒</div>Your cart is empty.<br>Add something tasty from the menu.</div>';
+    } else {
+      ids.forEach(function(id){
+        var item = MENU.find(function(m){ return m.id===id; });
+        if(!item) return;
+        var line = document.createElement('div');
+        line.className = 'cart-line';
+        line.innerHTML =
+          '<div class="cart-line__info">'+
+            '<div class="name">'+item.icon+' '+item.name+'</div>'+
+            '<div class="unit">'+money(item.price)+' each</div>'+
+          '</div>'+
+          '<div class="cart-line__stepper"></div>'+
+          '<div class="cart-line__total">'+money(item.price*cart[id])+'</div>'+
+          '<button type="button" class="remove-btn" aria-label="Remove '+item.name+'">✕</button>';
+        line.querySelector('.cart-line__stepper').appendChild(buildStepper(id));
+        line.querySelector('.remove-btn').addEventListener('click', function(){ removeFromCart(id); });
+        listEl.appendChild(line);
+      });
+    }
+    renderUpsell();
+    renderTotals();
+  }
+
+  function renderUpsell(){
+    var row = document.getElementById('upsellRow');
+    var wrap = document.getElementById('upsellBlock');
+    if(!Object.keys(cart).length){ wrap.style.display='none'; return; }
+    var suggestions = MENU.filter(function(m){ return !cart[m.id] && (m.cat==='Drinks' || m.cat==='Sides'); }).slice(0,3);
+    if(!suggestions.length){ wrap.style.display='none'; return; }
+    wrap.style.display='block';
+    row.innerHTML='';
+    suggestions.forEach(function(item){
+      var chip = document.createElement('button');
+      chip.type='button'; chip.className='upsell-chip';
+      chip.innerHTML = '<span class="em">'+item.icon+'</span> Add '+item.name+' · '+money(item.price);
+      chip.addEventListener('click', function(){ changeQty(item.id,1); renderCart(); });
+      row.appendChild(chip);
+    });
+  }
+
+  function setOrderType(type){
+    orderType = type;
+    document.getElementById('typeDelivery').classList.toggle('active', type==='delivery');
+    document.getElementById('typePickup').classList.toggle('active', type==='pickup');
+    document.getElementById('addressField').style.display = type==='delivery' ? 'block' : 'none';
+    renderTotals();
+  }
+
+  function renderTotals(){
+    var subtotal = cartSubtotal();
+    var fee = orderType==='delivery' ? DELIVERY_FEE : 0;
+    document.getElementById('subtotalVal').textContent = money(subtotal);
+    document.getElementById('feeRow').style.display = orderType==='delivery' ? 'flex' : 'none';
+    document.getElementById('feeVal').textContent = money(fee);
+    document.getElementById('totalVal').textContent = money(subtotal+fee);
+    document.getElementById('continueBtn').disabled = subtotal === 0;
+  }
+
+  function goToCart(){
+    renderCart();
+    setOrderType(orderType);
+    showView('cart');
+  }
+
+  var paymentMethod = 'transfer';
+  var BANK_DETAILS = {
+    bank: '[Add your bank name]',
+    accountNumber: '0000000000',
+    accountName: 'Albaik Chicken Kano'
+  };
+
+  function continueToPayment(){
+    if(cartSubtotal()===0) return;
+    if(orderType==='delivery'){
+      var addrInput = document.getElementById('addressInput');
+      var addrField = document.getElementById('addressField');
+      if(!addrInput.value.trim()){
+        addrField.classList.add('error');
+        addrInput.focus();
+        return;
+      }
+      addrField.classList.remove('error');
+    }
+    renderPayment();
+    showView('payment');
+  }
+
+  function renderPayment(){
+    var subtotal = cartSubtotal();
+    var fee = orderType==='delivery' ? DELIVERY_FEE : 0;
+    var total = subtotal + fee;
+
+    document.getElementById('paySummaryCount').textContent = cartCount();
+    document.getElementById('paySummaryTypeLabel').textContent = orderType==='delivery' ? 'Delivery to' : 'Pickup at';
+    document.getElementById('paySummaryType').textContent = orderType==='delivery'
+      ? (document.getElementById('addressInput').value.trim() || 'address provided')
+      : 'Gwarzo Road';
+    document.getElementById('paySummaryTotal').textContent = money(total);
+
+    document.getElementById('bankName').textContent = BANK_DETAILS.bank;
+    document.getElementById('bankAcctNum').textContent = BANK_DETAILS.accountNumber;
+    document.getElementById('bankAcctName').textContent = BANK_DETAILS.accountName;
+    document.getElementById('transferAmount').textContent = money(total);
+    document.getElementById('cashAmount').textContent = money(total);
+    document.getElementById('cashWhen').textContent = orderType==='delivery' ? 'arrives' : 'is ready for pickup';
+    document.getElementById('payCashLabel').textContent = orderType==='delivery' ? 'Pay on Delivery' : 'Pay on Pickup';
+
+    setPaymentMethod(paymentMethod);
+  }
+
+  function setPaymentMethod(method){
+    paymentMethod = method;
+    document.getElementById('payTransfer').classList.toggle('active', method==='transfer');
+    document.getElementById('payCash').classList.toggle('active', method==='cash');
+    document.getElementById('transferCard').classList.toggle('show', method==='transfer');
+    document.getElementById('cashCard').classList.toggle('show', method==='cash');
+
+    var btn = document.getElementById('confirmPaymentBtn');
+    if(method==='transfer'){
+      btn.textContent = "I've Sent the Transfer ✅";
+    } else {
+      btn.textContent = orderType==='delivery' ? 'Place Order — Pay on Delivery' : 'Place Order — Pay on Pickup';
+    }
+  }
+
+  function confirmPaymentAndPlaceOrder(){
+    if(cartSubtotal()===0) return;
+    startTracking();
+    showView('tracking');
+  }
+
+  function startTracking(){
+    trackingTimers.forEach(clearTimeout);
+    trackingTimers = [];
+
+    var orderId = 'AB-' + Math.floor(1000+Math.random()*9000);
+    document.getElementById('orderIdVal').textContent = '#'+orderId;
+    document.getElementById('orderTypeVal').textContent = orderType==='delivery' ? 'Delivery' : 'Pickup';
+
+    var payEl = document.getElementById('orderPaymentVal');
+    if(paymentMethod==='transfer'){
+      payEl.textContent = '🏦 Paid by bank transfer · awaiting confirmation';
+    } else {
+      payEl.textContent = orderType==='delivery' ? '💵 Pay on delivery' : '💵 Pay on pickup';
+    }
+
+    var stagesDelivery = [
+      { key:'received', icon:'🧾', label:'Order received', sub:"We've got it!" },
+      { key:'kitchen', icon:'👨‍🍳', label:'Preparing in the kitchen', sub:'Cooking fresh, just for you' },
+      { key:'packaging', icon:'📦', label:'Packaging your order', sub:'Sealing it up to stay hot' },
+      { key:'courier', icon:'🛵', label:'With your courier', sub:'On the way to you' },
+      { key:'delivered', icon:'✅', label:'Delivered', sub:'Enjoy!' }
+    ];
+    var stagesPickup = [
+      { key:'received', icon:'🧾', label:'Order received', sub:"We've got it!" },
+      { key:'kitchen', icon:'👨‍🍳', label:'Preparing in the kitchen', sub:'Cooking fresh, just for you' },
+      { key:'packaging', icon:'📦', label:'Packaging your order', sub:'Sealing it up to stay hot' },
+      { key:'ready', icon:'🛎️', label:'Ready for pickup', sub:'Waiting at the counter' },
+      { key:'picked', icon:'✅', label:'Picked up', sub:'Enjoy!' }
+    ];
+    var stages = orderType==='delivery' ? stagesDelivery : stagesPickup;
+
+    var tl = document.getElementById('timeline');
+    tl.innerHTML = '';
+    stages.forEach(function(s, i){
+      var el = document.createElement('div');
+      el.className = 'tl-stage pending';
+      el.id = 'tl-'+s.key;
+      el.innerHTML =
+        '<div class="tl-icon">'+s.icon+'</div>'+
+        '<div class="tl-content"><div class="label">'+s.label+'</div><div class="sub">'+(i===0?'':'Waiting…')+'</div></div>';
+      tl.appendChild(el);
+    });
+
+    document.getElementById('enjoyCard').classList.remove('show');
+    document.getElementById('newOrderBtn').classList.remove('show');
+
+    stages.forEach(function(s, i){
+      var t = setTimeout(function(){
+        if(i>0){
+          var prev = document.getElementById('tl-'+stages[i-1].key);
+          prev.classList.remove('active'); prev.classList.add('done');
+          prev.querySelector('.sub').textContent = 'Done';
+        }
+        var cur = document.getElementById('tl-'+s.key);
+        cur.classList.remove('pending'); cur.classList.add('active');
+        cur.querySelector('.sub').textContent = s.sub;
+
+        if(i === stages.length-1){
+          setTimeout(function(){
+            cur.classList.remove('active'); cur.classList.add('done');
+            cur.querySelector('.sub').textContent = 'Done';
+            document.getElementById('enjoyCard').classList.add('show');
+            document.getElementById('newOrderBtn').classList.add('show');
+          }, 1400);
+        }
+      }, i*2400);
+      trackingTimers.push(t);
+    });
+  }
+
+  function resetOrder(){
+    cart = {};
+    orderType = 'delivery';
+    paymentMethod = 'transfer';
+    updateCartBadge();
+    document.getElementById('addressInput').value = '';
+    document.getElementById('addressField').classList.remove('error');
+    showView('menu');
+    renderMenu();
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateCartBadge();
+    document.getElementById('typeDelivery').addEventListener('click', function(){ setOrderType('delivery'); });
+    document.getElementById('typePickup').addEventListener('click', function(){ setOrderType('pickup'); });
+    document.getElementById('payTransfer').addEventListener('click', function(){ setPaymentMethod('transfer'); });
+    document.getElementById('payCash').addEventListener('click', function(){ setPaymentMethod('cash'); });
+    document.getElementById('newOrderBtn').addEventListener('click', resetOrder);
+    document.getElementById('copyAcctBtn').addEventListener('click', function(){
+      var btn = this;
+      var num = BANK_DETAILS.accountNumber;
+      function showCopied(){
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1600);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(num).then(showCopied).catch(showCopied);
+      } else {
+        showCopied();
+      }
+    });
+    document.getElementById('copyPhoneBtn').addEventListener('click', function(){
+      var btn = this;
+      function showCopied(){
+        btn.textContent = 'Copied!';
+        setTimeout(function(){ btn.textContent = 'Copy'; }, 1600);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText('0705 793 7677').then(showCopied).catch(showCopied);
+      } else {
+        showCopied();
+      }
+    });
+    document.getElementById('orderOverlay').addEventListener('click', function(e){
+      if(e.target.id === 'orderOverlay') closeOrderModal();
+    });
+    document.getElementById('contactOverlay').addEventListener('click', function(e){
+      if(e.target.id === 'contactOverlay') closeContactSheet();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        var orderOv = document.getElementById('orderOverlay');
+        var contactOv = document.getElementById('contactOverlay');
+        if(contactOv.classList.contains('open')) closeContactSheet();
+        else if(orderOv.classList.contains('open')) closeOrderModal();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
